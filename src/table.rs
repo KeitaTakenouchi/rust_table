@@ -91,9 +91,8 @@ impl Cell {
                 String::from(value)
             }
             CellType::Dbl => {
-                let a: f32 = value.parse().unwrap();
-                let s = format!("{0:.3}", a);
-                String::from(s)
+                let s: f32 = value.parse().unwrap();
+                format!("{0:.3}", s)
             }
             CellType::Date => String::from(value),
         };
