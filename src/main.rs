@@ -1,12 +1,29 @@
 mod table;
 
-fn main() {
-    let mut t1 = table::Table::new("Genboy");
-    t1.print_name();
+use table::CellType::*;
+use table::*;
 
-    let t2 = &mut t1;
-    t2.print_name();
-    t2.update_name("Keita");
-    t2.print_name();
-    t2.print_name();
+fn main() {
+    let mut table = Table::new(vec![
+        ColSchema::new("c1", Str),
+        ColSchema::new("c2", Int),
+        ColSchema::new("c3", Str),
+    ]);
+    table.add_row(&mut vec![
+        Cell::new("A", Str),
+        Cell::new("12", Str),
+        Cell::new("XX", Str),
+    ]);
+    table.add_row(&mut vec![
+        Cell::new("B", Str),
+        Cell::new("10", Str),
+        Cell::new("XX", Str),
+    ]);
+    table.add_row(&mut vec![
+        Cell::new("A", Str),
+        Cell::new("21", Str),
+        Cell::new("YY", Str),
+    ]);
+
+    println!("{}", table);
 }
